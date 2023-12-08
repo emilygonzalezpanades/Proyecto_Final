@@ -24,7 +24,8 @@ public abstract class Vehiculo implements Comparable<Vehiculo>{
     public Vehiculo() {
     }
 
-    public Vehiculo(String chapa, String color, String fechaFabricacion, double cantidadCombustible, double kilometraje, double precioReparacion, String fechaReparacion, double costoReparacion) {
+    public Vehiculo(String chapa, String color, String fechaFabricacion, double cantidadCombustible, double kilometraje, double precioReparacion, 
+            String fechaReparacion, double costoReparacion) {
         this.chapa = chapa;
         this.color = color;
         this.fechaFabricacion = fechaFabricacion;
@@ -89,6 +90,14 @@ public abstract class Vehiculo implements Comparable<Vehiculo>{
 
     public void setFechaReparacion(String fechaReparacion) {
         this.fechaReparacion = fechaReparacion;
+    }
+    
+    public double getCostoReparacion() {
+        return costoReparacion;
+    }
+
+    public void setCostoReparacion(double costoReparacion) {
+        this.costoReparacion = costoReparacion;
     }
        
     public abstract double invertidoEnPiezas();

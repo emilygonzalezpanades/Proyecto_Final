@@ -16,7 +16,8 @@ public class Automovil extends Vehiculo{
     public Automovil() {
     }
 
-    public Automovil(int cantidadVelocidades, String chapa, String color, String fechaFabricacion, double cantidadCombustible, double kilometraje, double precioReparacion, String fechaReparacion, double costoReparacion) {
+    public Automovil(int cantidadVelocidades, String chapa, String color, String fechaFabricacion, double cantidadCombustible,
+            double kilometraje, double precioReparacion, String fechaReparacion, double costoReparacion) {
         super(chapa, color, fechaFabricacion, cantidadCombustible, kilometraje, precioReparacion, fechaReparacion, costoReparacion);
         this.cantidadVelocidades = cantidadVelocidades;
     }

@@ -14,7 +14,8 @@ public class Camioneta extends Automovil{
     private double volumenMaximo;
     private double volumenCargado;
 
-    public Camioneta(double volumenMaximo, double volumenCargado, int cantidadVelocidades, String chapa, String color, String fechaFabricacion, double cantidadCombustible, double kilometraje, double precioReparacion, String fechaReparacion, double costoReparacion) {
+    public Camioneta(double volumenMaximo, double volumenCargado, int cantidadVelocidades, String chapa, String color, String fechaFabricacion,
+            double cantidadCombustible, double kilometraje, double precioReparacion, String fechaReparacion, double costoReparacion) {
         super(cantidadVelocidades, chapa, color, fechaFabricacion, cantidadCombustible, kilometraje, precioReparacion, fechaReparacion, costoReparacion);
         this.volumenMaximo = volumenMaximo;
         this.volumenCargado = volumenCargado;

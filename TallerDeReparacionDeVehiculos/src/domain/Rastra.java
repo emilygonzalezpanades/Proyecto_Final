@@ -13,7 +13,8 @@ package domain;
 public class Rastra extends Automovil{
     private int cantidadVagones;
 
-    public Rastra(int cantidadVagones, int cantidadVelocidades, String chapa, String color, String fechaFabricacion, double cantidadCombustible, double kilometraje, double precioReparacion, String fechaReparacion, double costoReparacion) {
+    public Rastra(int cantidadVagones, int cantidadVelocidades, String chapa, String color, String fechaFabricacion, double cantidadCombustible,
+            double kilometraje, double precioReparacion, String fechaReparacion, double costoReparacion) {
         super(cantidadVelocidades, chapa, color, fechaFabricacion, cantidadCombustible, kilometraje, precioReparacion, fechaReparacion, costoReparacion);
         this.cantidadVagones = cantidadVagones;
     }

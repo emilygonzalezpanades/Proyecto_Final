@@ -14,7 +14,8 @@ public class Motocicleta extends Vehiculo{
     private boolean monoplaza;
     private String paisProcedencia;
 
-    public Motocicleta(boolean monoplaza, String paisProcedencia, String chapa, String color, String fechaFabricacion, double cantidadCombustible, double kilometraje, double precioReparacion, String fechaReparacion, double costoReparacion) {
+    public Motocicleta(boolean monoplaza, String paisProcedencia, String chapa, String color, String fechaFabricacion, double cantidadCombustible,
+            double kilometraje, double precioReparacion, String fechaReparacion, double costoReparacion) {
         super(chapa, color, fechaFabricacion, cantidadCombustible, kilometraje, precioReparacion, fechaReparacion, costoReparacion);
         this.monoplaza = monoplaza;
         this.paisProcedencia = paisProcedencia;
