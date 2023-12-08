@@ -13,7 +13,8 @@ package domain;
 public class Convertible extends Automovil{
     private boolean lujo;
 
-    public Convertible(boolean lujo, int cantidadVelocidades, String chapa, String color, String fechaFabricacion, double cantidadCombustible, double kilometraje, double precioReparacion, String fechaReparacion, double costoReparacion) {
+    public Convertible(boolean lujo, int cantidadVelocidades, String chapa, String color, String fechaFabricacion, double cantidadCombustible, 
+            double kilometraje, double precioReparacion, String fechaReparacion, double costoReparacion) {
         super(cantidadVelocidades, chapa, color, fechaFabricacion, cantidadCombustible, kilometraje, precioReparacion, fechaReparacion, costoReparacion);
         this.lujo = lujo;
     }

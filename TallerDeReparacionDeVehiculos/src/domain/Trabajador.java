@@ -7,7 +7,6 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 /**
  *
@@ -16,9 +15,9 @@ import java.util.LinkedList;
 public class Trabajador {
     private String nombre;
     private String id;
-    private LinkedList<Vehiculo> vehiculos;
+    private ArrayList<Vehiculo> vehiculos;
 
-    public Trabajador(String nombre, String id, LinkedList<Vehiculo> vehiculos) {
+    public Trabajador(String nombre, String id, ArrayList<Vehiculo> vehiculos) {
         this.nombre = nombre;
         this.id = id;
         this.vehiculos = vehiculos;
@@ -40,11 +39,11 @@ public class Trabajador {
         this.id = id;
     }
 
-    public LinkedList<Vehiculo> getVehiculos() {
+    public ArrayList<Vehiculo> getVehiculos() {
         return vehiculos;
     }
 
-    public void setVehiculos(LinkedList<Vehiculo> vehiculos) {
+    public void setVehiculos(ArrayList<Vehiculo> vehiculos) {
         this.vehiculos = vehiculos;
     }
     

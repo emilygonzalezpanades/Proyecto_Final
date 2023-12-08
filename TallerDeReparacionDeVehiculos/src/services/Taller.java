@@ -14,7 +14,7 @@ import domain.Vehiculo;
 import interfaces.ITaller;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -23,21 +23,26 @@ import java.util.Map;
  * @author admin
  */
 public class Taller implements ITaller{
-    private LinkedList<Vehiculo> listVehiculos = new LinkedList<>();
-    private LinkedList<Trabajador> listTrabajadores = new LinkedList<>();
-
-    @Override
-    public boolean agregarVehiculo(Vehiculo v) {
-        return listVehiculos.add(v);
+    private ArrayList<Vehiculo> listVehiculos;
+    private ArrayList<Trabajador> listTrabajadores;
+    
+    public Taller(){
+        listVehiculos = new ArrayList<>();
+        listTrabajadores = new ArrayList<>();
     }
 
     @Override
-    public boolean agregarTrabajador(Trabajador t) {
-        return listTrabajadores.add(t);
+    public void agregarVehiculo(Vehiculo v) {
+        listVehiculos.add(v);
+    }
+
+    @Override
+    public void agregarTrabajador(Trabajador t) {
+        listTrabajadores.add(t);
     }
     
     @Override
-    public Map<String, Integer> cantidadVehiculosPorTipo(LinkedList<Vehiculo> list) {
+    public Map<String, Integer> cantidadVehiculosPorTipo(ArrayList<Vehiculo> list) {
         Map<String, Integer> vehiculosPorTipo = new HashMap<>();
         vehiculosPorTipo.put("moto", 0);
         vehiculosPorTipo.put("camioneta", 0);
@@ -64,27 +69,14 @@ public class Taller implements ITaller{
 
     @Override
     public double calcularSalarioMensual(String id, String mes) {
-        LinkedList<Vehiculo> vehiculosPorMes = new LinkedList<>();
+        ArrayList<Vehiculo> vehiculosPorMes = new ArrayList<>();
         double salario = 0;
-        int pos = -1;
-        int j = 0;
-        
-        while(pos == -1 && j < listTrabajadores.size()){
-            if(listTrabajadores.get(j).getId().equals(id))
-                pos = j;
-            j++;
-        } 
-        
-        if(pos == -1)
-            return pos;
-        else{
-            LinkedList<Vehiculo> vehiculosPorTrabajador = listTrabajadores.get(pos).getVehiculos();
-            for(Vehiculo v : vehiculosPorTrabajador){
-                String[] fecha = v.getFechaReparacion().split("-");
-                if (fecha[1].equals(mes)){
-                    salario += gananciaVehiculo(v);
-                    vehiculosPorMes.add(v);
-                }
+        ArrayList<Vehiculo> vehiculosPorTrabajador = buscarTrabajador(id).getVehiculos();
+        for(Vehiculo v : vehiculosPorTrabajador){
+            String[] fecha = v.getFechaReparacion().split("-");
+            if (fecha[1].equals(mes)){
+                salario += gananciaVehiculo(v);
+                vehiculosPorMes.add(v);        
             }
             
         Map<String, Integer> tipoVehiculos = cantidadVehiculosPorTipo(vehiculosPorMes);
@@ -105,20 +97,12 @@ public class Taller implements ITaller{
         else
             salario += tipoVehiculos.get("rastra")/12*6;
         
-        return salario;
-        }
+        } return salario;
     }
 
     @Override
     public double inversionDeUnVehiculo(String chap) {
-        int pos = -1;
-        int i = 0;
-        while(pos == -1 && i < listVehiculos.size()){
-            if(listVehiculos.get(i).getChapa().equals(chap))
-                pos = i;
-            i++;
-        }
-        return listVehiculos.get(pos).invertidoEnPiezas();
+        return buscarVehiculo(chap).invertidoEnPiezas();
     }
 
     @Override
@@ -131,14 +115,8 @@ public class Taller implements ITaller{
 
     @Override
     public Map<String, Integer> cantidadDeVehiculosPorTrabajador(String id) {
-        int pos = -1;
-        int j = 0;
-        while(pos == -1 && j < listTrabajadores.size()){
-            if(listTrabajadores.get(j).getId().equals(id))
-                pos = j;
-            j++;
-        }
-        LinkedList<Vehiculo> vehiculos = listTrabajadores.get(pos).getVehiculos();
+        Trabajador t = buscarTrabajador(id);
+        ArrayList<Vehiculo> vehiculos = t.getVehiculos();
         
         return cantidadVehiculosPorTipo(vehiculos);
     }
@@ -150,8 +128,8 @@ public class Taller implements ITaller{
     }
 
     @Override
-    public LinkedList ordenarReparacionesDiarias(String dia) {
-        LinkedList<Vehiculo> vehiculos = new LinkedList<>();
+    public ArrayList ordenarReparacionesDiarias(String dia) {
+        ArrayList<Vehiculo> vehiculos = new ArrayList<>();
         for(Vehiculo v: listVehiculos){
             if(v.getFechaReparacion().equals(dia))
                 vehiculos.add(v);
@@ -171,13 +149,38 @@ public class Taller implements ITaller{
     }
 
     @Override
-    public LinkedList<Vehiculo> getVehiculos() {
+    public ArrayList<Vehiculo> getVehiculos() {
         return listVehiculos;
     }
 
     @Override
-    public LinkedList<Trabajador> getTrabajadores() {
+    public ArrayList<Trabajador> getTrabajadores() {
         return listTrabajadores;
+    }
+
+    @Override
+    public Vehiculo buscarVehiculo(String chapa) {
+        int pos = -1;
+        int i = 0;
+        while(pos == -1 && i < listVehiculos.size()){
+            if(listVehiculos.get(i).getChapa().equals(chapa))
+                pos = i;
+            i++;
+        }
+        return listVehiculos.get(pos);
+    }
+
+    @Override
+    public Trabajador buscarTrabajador(String id) {
+        int pos = -1;
+        int j = 0;
+        
+        while(pos == -1 && j < listTrabajadores.size()){
+            if(listTrabajadores.get(j).getId().equals(id))
+                pos = j;
+            j++;
+        }
+        return listTrabajadores.get(pos);
     }
 
 
