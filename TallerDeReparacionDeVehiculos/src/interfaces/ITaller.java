@@ -9,6 +9,7 @@ package interfaces;
 import domain.Trabajador;
 import domain.Vehiculo;
 import java.util.LinkedList;
+import java.util.Map;
 
 /**
  *
@@ -17,10 +18,11 @@ import java.util.LinkedList;
 public interface ITaller {
     boolean agregarVehiculo(Vehiculo v);
     boolean agregarTrabajador(Trabajador t);
-    LinkedList<Integer> cantidadDeVehiculosPorTrabajador(String id);
+    Map<String, Integer> cantidadDeVehiculosPorTrabajador(String id);
     double gananciaVehiculo(Vehiculo v);
     LinkedList ordenarReparacionesDiarias(String dia);
     double calcularSalarioMensual(String id, String mes);
+    Map<String, Integer> cantidadVehiculosPorTipo(LinkedList<Vehiculo> list);
     Trabajador trabajadorMasProductivo();
     double inversionDeUnVehiculo(String chap);
     double gananciaTotal();
