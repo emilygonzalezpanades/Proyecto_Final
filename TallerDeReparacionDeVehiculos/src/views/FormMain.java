@@ -33,6 +33,7 @@ public class FormMain extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         
+        
         Vehiculo v1 = new Motocicleta(true, "iggyg", "a", "dgg", "3-3-3", 3, 5, 100, "4-4-4", 50);
         Vehiculo v2 = new Motocicleta(false, "iggyg", "b", "dgg", "3-3-3", 3, 5, 400, "4-4-4", 300);
         Vehiculo v3 = new Motocicleta(true, "iggyg", "c", "dgg", "3-3-3", 3, 5, 450, "4-4-4", 390);
@@ -139,6 +140,9 @@ public class FormMain extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
         jToolBar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jToolBar1.setRollover(true);
 
@@ -146,6 +150,11 @@ public class FormMain extends javax.swing.JFrame {
         jButton1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 jButton1MouseMoved(evt);
+            }
+        });
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
             }
         });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -156,6 +165,16 @@ public class FormMain extends javax.swing.JFrame {
         jToolBar1.add(jButton1);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/146manmechanic2_100581 (1).png"))); // NOI18N
+        jButton2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jButton2MouseMoved(evt);
+            }
+        });
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton2MouseExited(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -230,15 +249,15 @@ public class FormMain extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 25, Short.MAX_VALUE)))
-                        .addGap(259, 259, 259))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(234, 234, 234))
                     .addGroup(jDesktopPane3Layout.createSequentialGroup()
                         .addGroup(jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
+                .addGap(30, 30, 30))
         );
         jDesktopPane3Layout.setVerticalGroup(
             jDesktopPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,6 +320,16 @@ public class FormMain extends javax.swing.JFrame {
         });
 
         jMenuItem5.setText("Trabajador");
+        jMenuItem5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jMenuItem5MouseMoved(evt);
+            }
+        });
+        jMenuItem5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jMenuItem5MouseExited(evt);
+            }
+        });
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
@@ -309,6 +338,16 @@ public class FormMain extends javax.swing.JFrame {
         jMenu1.add(jMenuItem5);
 
         jMenuItem13.setText("Vehiculo");
+        jMenuItem13.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jMenuItem13MouseMoved(evt);
+            }
+        });
+        jMenuItem13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jMenuItem13MouseExited(evt);
+            }
+        });
         jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem13ActionPerformed(evt);
@@ -402,6 +441,16 @@ public class FormMain extends javax.swing.JFrame {
         jMenu3.add(jMenuItem14);
 
         jMenuItem4.setText("Calcular Salario");
+        jMenuItem4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jMenuItem4MouseMoved(evt);
+            }
+        });
+        jMenuItem4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jMenuItem4MouseExited(evt);
+            }
+        });
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -463,13 +512,11 @@ public class FormMain extends javax.swing.JFrame {
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         FormInsertarTrabajador form  = new FormInsertarTrabajador(taller);
         form.setVisible(true);
-        form.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         FormTrabajadores form = new FormTrabajadores(taller);
         form.setVisible(true);
-        form.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jMenu1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseMoved
@@ -486,14 +533,18 @@ public class FormMain extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         FormSalario form = new FormSalario(taller);
+        if(!taller.getTrabajadores().isEmpty()){
         form.setVisible(true);
-        form.setLocationRelativeTo(null);
+        } else
+            JOptionPane.showMessageDialog(this, "Aun no se han agregado trabajadores");
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         FormVehiculosTrabajador form = new FormVehiculosTrabajador(taller);
-        form.setVisible(true);
-        form.setLocationRelativeTo(null);
+        if(!taller.getTrabajadores().isEmpty()){
+            form.setVisible(true);
+        } else
+            JOptionPane.showMessageDialog(this, "Aun no se han agregado trabajadores");
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenu3MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseMoved
@@ -517,7 +568,7 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem11MouseExited
 
     private void jMenuItem12MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem12MouseMoved
-        jLabel1.setText("Reparaciones diarias ordenadas de menor a mayor");
+        jLabel1.setText("Reparaciones diarias ordenadas de menor a mayor segun su precio de reparacion");
     }//GEN-LAST:event_jMenuItem12MouseMoved
 
     private void jMenuItem12MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem12MouseExited
@@ -534,20 +585,23 @@ public class FormMain extends javax.swing.JFrame {
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         FormReparacionesDiarias form = new FormReparacionesDiarias(taller);
-        form.setVisible(true);
-        form.setLocationRelativeTo(null);
+        if(!taller.getVehiculos().isEmpty()){
+            form.setVisible(true);
+        } else
+            JOptionPane.showMessageDialog(this, "Aun no se han agregado vehiculos");
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         FormInversion form = new FormInversion(taller);
+        if(!taller.getVehiculos().isEmpty()){
         form.setVisible(true);
-        form.setLocationRelativeTo(null);
+        } else
+            JOptionPane.showMessageDialog(this, "Aun no se han agregado vehiculos");
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         FormVehiculos form = new FormVehiculos(taller);
         form .setVisible(true);
-        form.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -559,7 +613,7 @@ public class FormMain extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if(taller.getTrabajadores().isEmpty())
-            JOptionPane.showMessageDialog(this, "Aun no se han agregado vehiculos");
+            JOptionPane.showMessageDialog(this, "Aun no se han agregado trabajadores");
         else{
             Trabajador t = taller.trabajadorMasProductivo();
             lbNombre.setText(" " + t.getNombre());
@@ -573,13 +627,49 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jButton1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseMoved
-        // TODO add your handling code here:
+        jLabel1.setText("Listado de todos los vehiculos guardados");
     }//GEN-LAST:event_jButton1MouseMoved
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
         FormInsertarVehiculo form = new FormInsertarVehiculo(taller);
         form.setVisible(true);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem4MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem4MouseMoved
+        jLabel1.setText("Calcular salario de un trabajador dado su carnet de identidad");
+    }//GEN-LAST:event_jMenuItem4MouseMoved
+
+    private void jMenuItem4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem4MouseExited
+        jLabel1.setText("");
+    }//GEN-LAST:event_jMenuItem4MouseExited
+
+    private void jMenuItem5MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem5MouseMoved
+        jLabel1.setText("Agregar un nuevo trabajador");
+    }//GEN-LAST:event_jMenuItem5MouseMoved
+
+    private void jMenuItem5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem5MouseExited
+        jLabel1.setText("");
+    }//GEN-LAST:event_jMenuItem5MouseExited
+
+    private void jMenuItem13MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem13MouseMoved
+        jLabel1.setText("Agregar un nuevo vehiculo");
+    }//GEN-LAST:event_jMenuItem13MouseMoved
+
+    private void jMenuItem13MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem13MouseExited
+        jLabel1.setText("");
+    }//GEN-LAST:event_jMenuItem13MouseExited
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        jLabel1.setText("");
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton2MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseMoved
+        jLabel1.setText("Listado de todos los trabajadores guardados");
+    }//GEN-LAST:event_jButton2MouseMoved
+
+    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
+        jLabel1.setText("");
+    }//GEN-LAST:event_jButton2MouseExited
 
     /**
      * @param args the command line arguments

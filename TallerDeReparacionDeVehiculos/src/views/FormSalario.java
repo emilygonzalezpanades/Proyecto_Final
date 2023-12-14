@@ -21,6 +21,8 @@ public class FormSalario extends javax.swing.JDialog {
     public FormSalario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Calcular salario");
     }
 
     public FormSalario(ITaller taller) {
@@ -52,11 +54,28 @@ public class FormSalario extends javax.swing.JDialog {
 
         jLabel1.setText("Carnet de Identidad");
 
+        txtCI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCIKeyTyped(evt);
+            }
+        });
+
         jLabel2.setText("Nombre");
 
         lbNombre.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lbNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                lbNombreKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("Mes");
+
+        txtMes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMesKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("Salario");
 
@@ -145,19 +164,9 @@ public class FormSalario extends javax.swing.JDialog {
         boolean flag = true;
         String mensaje = "Compruebe los siguientes parametros";
 
-        if(!validar.comprobarNumeros(txtCI.getText())){
-            flag = false;
-            mensaje += "\n-Carnet de identidad solo admite numeros";
-        }
-
         if(txtCI.getText().length() != 11){
             flag = false;
-            mensaje += "\n-Carnet de identidad solo admite 11 numeros";
-        }
-
-        if(!validar.comprobarNumeros(txtMes.getText())){
-            flag = false;
-            mensaje += "\n-Mes solo admite numeros";
+            mensaje += "\n-Carnet de identidad debe tener 11 numeros";
         }
 
         if(!validar.comprobarRango(validar.convertirEntero(txtMes.getText()), 1, 12)){
@@ -166,12 +175,32 @@ public class FormSalario extends javax.swing.JDialog {
         }
 
         if(flag){
+            try{
             lbNombre.setText(taller.buscarTrabajador(txtCI.getText()).getNombre());
             String salario = Double.toString(taller.calcularSalarioMensual(txtCI.getText(), txtMes.getText()));
             lbSalario.setText("$ " + salario);
+            }catch(ArrayIndexOutOfBoundsException exc){
+            JOptionPane.showMessageDialog(this, "No existe un trabajador con ese carnet de identidad");
+        }
         } else
         JOptionPane.showMessageDialog(this, mensaje);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtCIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCIKeyTyped
+        char cog = evt.getKeyChar();
+        if(Character.isLetter(cog))
+        evt.consume();
+    }//GEN-LAST:event_txtCIKeyTyped
+
+    private void lbNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbNombreKeyTyped
+        
+    }//GEN-LAST:event_lbNombreKeyTyped
+
+    private void txtMesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMesKeyTyped
+        char cog = evt.getKeyChar();
+        if(Character.isLetter(cog))
+        evt.consume();
+    }//GEN-LAST:event_txtMesKeyTyped
 
     /**
      * @param args the command line arguments
