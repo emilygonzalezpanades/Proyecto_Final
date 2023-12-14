@@ -43,9 +43,6 @@ public class Trabajador {
         return vehiculos;
     }
 
-    public void setVehiculos(ArrayList<Vehiculo> vehiculos) {
-        this.vehiculos = vehiculos;
-    }
     
     public boolean addVehiculo(Vehiculo v){
         return vehiculos.add(v);

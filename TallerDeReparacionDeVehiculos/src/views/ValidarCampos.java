@@ -12,19 +12,6 @@ package views;
  */
 public class ValidarCampos {
     
-    public boolean comprobarTexto(String a){
-        if(a.matches("^(?i)[a-záéíóúÁÉÍÓÚ]+$"))
-            return true;
-        else 
-            return false;
-    }
-    
-    public boolean comprobarNumeros(String a){
-        if(a.matches("^[0-9]+$"))
-            return true;
-        else
-            return false;
-    }
     
     public int convertirEntero(String a){
         int num = Integer.parseInt(a);

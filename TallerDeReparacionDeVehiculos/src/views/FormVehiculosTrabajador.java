@@ -171,21 +171,8 @@ public class FormVehiculosTrabajador extends javax.swing.JDialog {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        ValidarCampos validar = new ValidarCampos();
-        boolean flag = true;
-        String mensaje = "Compruebe los siguientes parametros";
-
-        if(!validar.comprobarNumeros(txtCI.getText())){
-            flag = false;
-            mensaje += "\n-ID solo admite numeros";
-        }
-
-        if(txtCI.getText().length() != 11){
-            flag = false;
-            mensaje += "\n-ID debe tener 11 numeros";
-        }
-
-        if(flag){
+        
+        if(txtCI.getText().length() == 11){
             try{
             lbNombre.setText(taller.buscarTrabajador(txtCI.getText()).getNombre());
             Map<String, Integer> vehiculos = taller.cantidadDeVehiculosPorTrabajador(txtCI.getText());
@@ -203,9 +190,9 @@ public class FormVehiculosTrabajador extends javax.swing.JDialog {
             jTable1.setModel(model);
             }catch(ArrayIndexOutOfBoundsException exc){
             JOptionPane.showMessageDialog(this, "No existe un trabajador con esa carnet de identidad");
-        }
+            }
         } else
-        JOptionPane.showMessageDialog(this, mensaje);
+        JOptionPane.showMessageDialog(this, "CI debe tener once numeros");
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void txtCIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCIKeyTyped
