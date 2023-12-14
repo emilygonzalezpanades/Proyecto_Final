@@ -38,6 +38,8 @@ public class FormVehiculosTrabajador extends javax.swing.JDialog {
     public FormVehiculosTrabajador(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Vehiculos por trabajador");
         vehiculos = new ArrayList<>();
         
         model.addColumn("Vehiculo");
@@ -72,6 +74,12 @@ public class FormVehiculosTrabajador extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Carnet de Identidad");
+
+        txtCI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCIKeyTyped(evt);
+            }
+        });
 
         jLabel2.setText("Nombre");
 
@@ -178,6 +186,7 @@ public class FormVehiculosTrabajador extends javax.swing.JDialog {
         }
 
         if(flag){
+            try{
             lbNombre.setText(taller.buscarTrabajador(txtCI.getText()).getNombre());
             Map<String, Integer> vehiculos = taller.cantidadDeVehiculosPorTrabajador(txtCI.getText());
 
@@ -192,9 +201,18 @@ public class FormVehiculosTrabajador extends javax.swing.JDialog {
             model.addRow(objeto4);
 
             jTable1.setModel(model);
+            }catch(ArrayIndexOutOfBoundsException exc){
+            JOptionPane.showMessageDialog(this, "No existe un trabajador con esa carnet de identidad");
+        }
         } else
         JOptionPane.showMessageDialog(this, mensaje);
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void txtCIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCIKeyTyped
+        char cog = evt.getKeyChar();
+        if(Character.isLetter(cog))
+        evt.consume();
+    }//GEN-LAST:event_txtCIKeyTyped
 
     /**
      * @param args the command line arguments

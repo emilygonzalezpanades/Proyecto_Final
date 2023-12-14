@@ -35,6 +35,8 @@ public class FormTrabajadores extends javax.swing.JDialog {
     public FormTrabajadores(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Lista de trabajadores");
         
         model.addColumn("Nombre");
         model.addColumn("CI");
@@ -122,7 +124,7 @@ public class FormTrabajadores extends javax.swing.JDialog {
                         .addGap(92, 92, 92)
                         .addComponent(jButton4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton3)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

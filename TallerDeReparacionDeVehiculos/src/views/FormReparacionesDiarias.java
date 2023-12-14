@@ -40,6 +40,8 @@ public class FormReparacionesDiarias extends javax.swing.JDialog {
     public FormReparacionesDiarias(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Reparaciones diarias");
         vehiculos = new ArrayList<>();
         
         model.addColumn("Vehiculo");
@@ -73,6 +75,12 @@ public class FormReparacionesDiarias extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Fecha");
+
+        txtFecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFechaKeyTyped(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -158,6 +166,7 @@ public class FormReparacionesDiarias extends javax.swing.JDialog {
         if(validar.comprobarFecha(txtFecha.getText())){
             ArrayList<Vehiculo> vehiculos = taller.ordenarReparacionesDiarias(txtFecha.getText());
 
+            if(!vehiculos.isEmpty()){
             for(Vehiculo v: vehiculos){
                 String tipo = "";
                 if(v instanceof Motocicleta)
@@ -173,11 +182,19 @@ public class FormReparacionesDiarias extends javax.swing.JDialog {
 
                 model.addRow(objeto);
             }
+            } else
+                JOptionPane.showMessageDialog(this, "No existe un vehiculo con esa fecha de reparación");
 
         } else
         JOptionPane.showMessageDialog(this, "Fecha solo admite formato dd/mm/aa");
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtFechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFechaKeyTyped
+        char cog = evt.getKeyChar();
+        if(Character.isLetter(cog))
+        evt.consume();
+    }//GEN-LAST:event_txtFechaKeyTyped
 
     /**
      * @param args the command line arguments
