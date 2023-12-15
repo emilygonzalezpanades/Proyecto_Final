@@ -3,13 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Proyecto_Final/TallerDeReparacionDeVehiculos/src/views/FormVehiculosTrabajador.java</file>
-            <file>file:/D:/Proyecto_Final/TallerDeReparacionDeVehiculos/src/views/FormMain.java</file>
-            <file>file:/D:/Proyecto_Final/TallerDeReparacionDeVehiculos/src/views/FormInsertarTrabajador.java</file>
-            <file>file:/D:/Proyecto_Final/TallerDeReparacionDeVehiculos/src/views/FormInsertarVehiculo.java</file>
-            <file>file:/D:/Proyecto_Final/TallerDeReparacionDeVehiculos/src/views/ValidarCampos.java</file>
-            <file>file:/D:/Proyecto_Final/TallerDeReparacionDeVehiculos/src/domain/Vehiculo.java</file>
-            <file>file:/D:/Proyecto_Final/TallerDeReparacionDeVehiculos/src/domain/Automovil.java</file>
+            <file>file:/C:/Ernesto/Trabajos/Proyecto_Final/TallerDeReparacionDeVehiculos/src/services/Taller.java</file>
+            <file>file:/C:/Ernesto/Trabajos/Proyecto_Final/TallerDeReparacionDeVehiculos/test/services/TallerTest.java</file>
         </group>
     </open-files>
 </project-private>
