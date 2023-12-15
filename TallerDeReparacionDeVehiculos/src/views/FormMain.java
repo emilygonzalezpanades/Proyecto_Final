@@ -34,13 +34,13 @@ public class FormMain extends javax.swing.JFrame {
         setResizable(false);
         
         
-        Vehiculo v1 = new Motocicleta(true, "iggyg", "a", "dgg", "3-3-3", 3, 5, 100, "4-4-4", 50);
-        Vehiculo v2 = new Motocicleta(false, "iggyg", "b", "dgg", "3-3-3", 3, 5, 400, "4-4-4", 300);
-        Vehiculo v3 = new Motocicleta(true, "iggyg", "c", "dgg", "3-3-3", 3, 5, 450, "4-4-4", 390);
-        Vehiculo v4 = new Rastra(5, 4, "d", "dgg", "3-3-3", 3, 5, 700, "4-4-4", 230);
-        Vehiculo v5 = new Convertible(true, 5, "e", "dgg", "3-3-3", 3, 5, 233, "4-4-4", 122);
-        Vehiculo v6 = new Convertible(true, 6, "f", "dgg", "3-3-3", 3, 5, 470, "4-4-4", 300);
-        Vehiculo v7 = new Camioneta(6, 3, 3, "g", "dgg", "3-3-3", 3, 5, 589, "4-4-4", 357);
+        Vehiculo v1 = new Motocicleta(true, "iggyg", "a", "dgg", "3-4-2023", 3, 5, 100, "4-5-2023", 50);
+        Vehiculo v2 = new Motocicleta(false, "iggyg", "b", "dgg", "13-8-2022", 3, 5, 400, "4-9-2022", 300);
+        Vehiculo v3 = new Motocicleta(true, "iggyg", "c", "dgg", "19-3-2023", 3, 5, 450, "4-5-2023", 390);
+        Vehiculo v4 = new Rastra(5, 4, "d", "dgg", "29-2-2023", 3, 5, 700, "4-4-2023", 230);
+        Vehiculo v5 = new Convertible(true, 5, "e", "dgg", "3-4-2023", 3, 5, 233, "4-5-2023", 122);
+        Vehiculo v6 = new Convertible(true, 6, "f", "dgg", "5-7-2022", 3, 5, 470, "4-9-2022", 300);
+        Vehiculo v7 = new Camioneta(6, 3, 3, "g", "dgg", "19-8-2022", 3, 5, 589, "18-9-2022", 357);
         
         taller.agregarVehiculo(v1);
         taller.agregarVehiculo(v2);
@@ -52,7 +52,7 @@ public class FormMain extends javax.swing.JFrame {
         
         ArrayList<Vehiculo> list = new ArrayList<>();
         
-        Trabajador t1 = new Trabajador("Emily", "12345678901", list);
+        Trabajador t1 = new Trabajador("Juan", "12345678901", list);
         
         t1.addVehiculo(v4);
         t1.addVehiculo(v7);
@@ -65,8 +65,20 @@ public class FormMain extends javax.swing.JFrame {
         t2.addVehiculo(v1);
         t2.addVehiculo(v3);
         
+        ArrayList<Vehiculo> list3 =  new ArrayList<>();
+        
+        Trabajador t3 = new Trabajador("Laura", "11111111111", list3);
+        
+        t3.addVehiculo(v7);
+        t3.addVehiculo(v2);
+        t3.addVehiculo(v5);
+        t3.addVehiculo(v4);
+        t3.addVehiculo(v1);
+        t3.addVehiculo(v6);
+        
         taller.agregarTrabajador(t1);
         taller.agregarTrabajador(t2);
+        taller.agregarTrabajador(t3);
     }
 
     /**
