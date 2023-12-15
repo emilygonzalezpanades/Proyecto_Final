@@ -28,7 +28,7 @@ public class FormInsertarVehiculo extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setTitle("Insertar trabajador");
+        this.setTitle("Insertar vehiculo");
         
         
         RadioButtonMonoplaza.setVisible(false);
@@ -475,38 +475,6 @@ public class FormInsertarVehiculo extends javax.swing.JDialog {
         String mensaje = "Compruebe los siguientes parametros";
 
         //if(camposVacios()){
-        
-        if (!txtChapa.getText().equals("") &&
-            !txtColor.getText().equals("") &&
-            !txtFechaFabricacion.getText().equals("") &&
-            !txtCombustible.getText().equals("") &&
-            !txtKilometraje.getText().equals("") &&
-            !txtPrecioReparacion.getText().equals("") &&
-            !txtCostoReparacion.getText().equals("") &&
-            !txtFechaReparacion.getText().equals("")){
-            
-            flag = false;
-        }
-        
-        if(moto.isSelected()){
-            if(txtPais.getText().equals("")){
-                flag = false;
-            }
-        }
-        
-        if(camioneta.isSelected()){
-            if(txtVolumenActual.getText().equals("") &&
-               txtVolumenMaximo.getText().equals("")){
-                flag = false;
-            }
-        }
-        
-        if(rastra.isSelected()){
-            if(txtVagones.getText().equals("")){
-                flag = false;
-            }
-        }
-        
         if(flag){
         if(!validar.comprobarFecha(txtFechaFabricacion.getText())){
             flag = false;
@@ -560,7 +528,7 @@ public class FormInsertarVehiculo extends javax.swing.JDialog {
                 Vehiculo v = new Rastra(vagones, velocidades, chapa, color, fechaFabricacion, combustible, kilometraje, precio, fechaReparacion, costo);
                 
                 taller.agregarVehiculo(v);
-                JOptionPane.showMessageDialog(this, "Camioneta guardada satisfactoriamente");
+                JOptionPane.showMessageDialog(this, "Camioneta guardada Correctamente");
                 }
         } else{
             JOptionPane.showMessageDialog(this, mensaje);
@@ -704,32 +672,6 @@ public class FormInsertarVehiculo extends javax.swing.JDialog {
             convertible.setSelected(rootPaneCheckingEnabled);
         else
             rastra.setSelected(rootPaneCheckingEnabled);
-    }
-    
-    public boolean camposVacios(){
-        boolean flag = true;
-        if (txtChapa.getText().equals("") &&
-            txtColor.getText().equals("") &&
-            txtFechaFabricacion.getText().equals("") &&
-            txtCombustible.getText().equals("") &&
-            txtKilometraje.getText().equals("") &&
-            txtPrecioReparacion.getText().equals("") &&
-            txtCostoReparacion.getText().equals("") &&
-            txtFechaReparacion.getText().equals("")){
-        } flag = false;
-        
-        if(moto.isSelected()){
-            if(txtPais.getText().equals(""))
-                flag = false;
-        } else if(camioneta.isSelected()){
-            if(txtVolumenActual.getText().equals("") &&
-               txtVolumenMaximo.getText().equals(""))
-                    flag = false;
-        } else if(rastra.isSelected())
-            if(txtVagones.getText().equals(""))
-                flag = false;
-        
-        return flag;
     }
     
     /**
