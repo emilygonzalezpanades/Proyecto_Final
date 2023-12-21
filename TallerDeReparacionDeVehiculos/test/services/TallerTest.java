@@ -9,7 +9,7 @@ package services;
 import domain.Trabajador;
 import domain.Vehiculo;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -86,18 +86,40 @@ public class TallerTest {
          fail("The test case is a prototype.");
         }
     }
-
-   
-
-   
-
+    //Second test of gananciaTotal method, of class Taller.
+    @Test
+    public void testGananciaTotal2(){
+        Taller taller = new Taller();
+        Vehiculo v1 = new Vehiculo(null, null, null, 60, 50, 500, null, 200) {
+         @Override
+            public double invertidoEnPiezas() {
+             return 0;
+              
+            }    
+        
+        };
+        Vehiculo v2 = new Vehiculo(null, null, null, 70, 40, 600, null, 100) {
+          @Override
+            public double invertidoEnPiezas() {
+              return 0;
+                
+            }  
+            
+        };
+        List<Vehiculo> vehiculos = new ArrayList<>();
+        vehiculos.add(v1);
+        vehiculos.add(v2);
+        double gananciaEsperada = 800;
+        double result = v1.gananciaVehiculo() + v2.gananciaVehiculo();
+        assertEquals(gananciaEsperada,result, 0.001);
+        }
     /**
      * Test of ordenarReparacionesDiarias method, of class Taller.
      */
     @Test
     public void testOrdenarReparacionesDiarias() {
         System.out.println("ordenarReparacionesDiarias");
-        String dia = "";
+        String dia = "5";
         Taller instance = new Taller();
         ArrayList expResult = null;
         ArrayList result = instance.ordenarReparacionesDiarias(dia);

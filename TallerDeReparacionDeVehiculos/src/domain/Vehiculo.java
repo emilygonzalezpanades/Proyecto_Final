@@ -111,4 +111,9 @@ public abstract class Vehiculo implements Comparable<Vehiculo>{
         else
             return 1;
     }
-}
+    
+    //Para las pruebas unitarias.
+    public double gananciaVehiculo() {
+        return getPrecioReparacion()-getCostoReparacion();
+    }
+}   
