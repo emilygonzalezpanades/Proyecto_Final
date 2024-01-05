@@ -12,6 +12,7 @@ import domain.Motocicleta;
 import domain.Rastra;
 import domain.Vehiculo;
 import interfaces.ITaller;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,6 +27,8 @@ public class FormInsertarVehiculo extends javax.swing.JDialog {
     public FormInsertarVehiculo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Insertar vehiculo");
         
         
         RadioButtonMonoplaza.setVisible(false);
@@ -471,6 +474,8 @@ public class FormInsertarVehiculo extends javax.swing.JDialog {
         boolean flag = true;
         String mensaje = "Compruebe los siguientes parametros";
 
+        //if(camposVacios()){
+        if(flag){
         if(!validar.comprobarFecha(txtFechaFabricacion.getText())){
             flag = false;
             mensaje += "\n -Formato de fecha de fabricación inválido: dd/mm/aa";
@@ -485,8 +490,11 @@ public class FormInsertarVehiculo extends javax.swing.JDialog {
             flag = false;
             mensaje += "\n -El precio de reparación no debe ser menor que el costo";
         }
+        } else
+            JOptionPane.showMessageDialog(this, "No debe dejar campos en blanco");
         
         if(flag){
+            
             String chapa = txtChapa.getText();
             String color = txtColor.getText();
             double combustible = validar.convertirEntero(txtCombustible.getText());
@@ -518,12 +526,16 @@ public class FormInsertarVehiculo extends javax.swing.JDialog {
                 int velocidades = sldVelocidades.getValue();
                 int vagones = validar.convertirEntero(txtVagones.getText());
                 Vehiculo v = new Rastra(vagones, velocidades, chapa, color, fechaFabricacion, combustible, kilometraje, precio, fechaReparacion, costo);
+                
                 taller.agregarVehiculo(v);
-                JOptionPane.showMessageDialog(this, "Camioneta guardada satisfactoriamente");
-            }
+                JOptionPane.showMessageDialog(this, "Camioneta guardada Correctamente");
+                }
         } else{
             JOptionPane.showMessageDialog(this, mensaje);
         }
+        
+        //} else
+        //    JOptionPane.showMessageDialog(this, "No debe dejar campos vacios");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtVagonesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtVagonesKeyTyped
@@ -646,12 +658,12 @@ public class FormInsertarVehiculo extends javax.swing.JDialog {
     public void cargarDatos(Vehiculo v){
         txtChapa.setText(v.getChapa());
         txtColor.setText(v.getColor());
-        txtCombustible.setText(Double.toString(v.getCantidadCombustible()));
-        txtCostoReparacion.setText(Double.toString(v.getCostoReparacion()));
+        txtCombustible.setText(Integer.toString((int) v.getCantidadCombustible()));
+        txtCostoReparacion.setText(Integer.toString((int) v.getCostoReparacion()));
         txtFechaFabricacion.setText(v.getFechaFabricacion());
         txtFechaReparacion.setText(v.getFechaReparacion());
-        txtKilometraje.setText(Double.toString(v.getKilometraje()));
-        txtPrecioReparacion.setText(Double.toString(v.getPrecioReparacion()));
+        txtKilometraje.setText(Integer.toString((int) v.getKilometraje()));
+        txtPrecioReparacion.setText(Integer.toString((int) v.getPrecioReparacion()));
         if(v instanceof Motocicleta)
             moto.setSelected(true);
         else if(v instanceof Camioneta)
@@ -661,6 +673,7 @@ public class FormInsertarVehiculo extends javax.swing.JDialog {
         else
             rastra.setSelected(rootPaneCheckingEnabled);
     }
+    
     /**
      * @param args the command line arguments
      */

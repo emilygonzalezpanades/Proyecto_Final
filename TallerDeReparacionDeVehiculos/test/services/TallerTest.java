@@ -6,6 +6,7 @@
 
 package services;
 
+
 import domain.Camioneta;
 import domain.Convertible;
 import domain.Motocicleta;
@@ -24,6 +25,22 @@ import org.junit.Test;
 /**
  *
  * @author admin
+
+import domain.Trabajador;
+import domain.Vehiculo;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author Ernesto
+
  */
 public class TallerTest {
     
@@ -69,7 +86,11 @@ public class TallerTest {
         instance.agregarTrabajador(t);
         
     }
-    
+
+     /**
+     * Test of gananciaTotal method, of class Taller.
+     */
+
     @Test
     public void testGananciaTotal() {
         System.out.println("gananciaTotal");
@@ -81,7 +102,8 @@ public class TallerTest {
          fail("The test case is a prototype.");
         }
     }
-    
+   
+    //Second test of gananciaTotal method, of class Taller.
     @Test
     public void testGananciaTotal2(){
         ITaller taller = new Taller();
@@ -97,6 +119,12 @@ public class TallerTest {
         assertEquals(gananciaEsperada, result);
     }
     
+
+    
+    /**
+     * Test of ordenarReparacionesDiarias method, of class Taller.
+     */
+
     @Test
     public void testOrdenarReparacionesDiarias() {
         System.out.println("ordenarReparacionesDiarias");

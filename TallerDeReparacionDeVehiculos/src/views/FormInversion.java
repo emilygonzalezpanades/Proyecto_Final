@@ -7,6 +7,7 @@
 package views;
 
 import interfaces.ITaller;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,6 +21,8 @@ public class FormInversion extends javax.swing.JDialog {
     public FormInversion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Inversion de un vehiculo");
     }
 
     public FormInversion(ITaller taller) {
@@ -112,7 +115,11 @@ public class FormInversion extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try{
         lbInversion.setText("$ " + Double.toString(taller.inversionDeUnVehiculo(txtChapa.getText())));
+        }catch(ArrayIndexOutOfBoundsException exc){
+            JOptionPane.showMessageDialog(this, "No existe un vehiculo con esa chapa");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

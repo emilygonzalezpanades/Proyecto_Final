@@ -32,7 +32,7 @@ public class Automovil extends Vehiculo{
 
     @Override
     public double invertidoEnPiezas() {
-        if(cantidadVelocidades > 5)
+        if(cantidadVelocidades >= 5)
             return 50;
         else return 0;
     }

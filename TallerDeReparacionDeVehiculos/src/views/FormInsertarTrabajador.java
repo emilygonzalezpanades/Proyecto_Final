@@ -41,6 +41,8 @@ public class FormInsertarTrabajador extends javax.swing.JDialog {
     public FormInsertarTrabajador(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Insertar trabajador");
         vehiculos = new ArrayList<>();
         
         model.addColumn("Vehiculo");
@@ -80,11 +82,22 @@ public class FormInsertarTrabajador extends javax.swing.JDialog {
 
         jLabel1.setText("Nombre");
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
+
         jLabel2.setText("Carnet de Identidad");
 
         txtCI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCIActionPerformed(evt);
+            }
+        });
+        txtCI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCIKeyTyped(evt);
             }
         });
 
@@ -194,25 +207,31 @@ public class FormInsertarTrabajador extends javax.swing.JDialog {
     }//GEN-LAST:event_txtCIActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        try{
         if(!taller.getVehiculos().isEmpty()) {
             Vehiculo vehiculo = taller.buscarVehiculo(txtChapa.getText());
-            vehiculos.add(vehiculo);
-            String tipo = "";
-            if(vehiculo instanceof Motocicleta)
-            tipo = "Motocicleta";
-            else if(vehiculo instanceof Camioneta)
-            tipo = "Camioneta";
-            else if(vehiculo instanceof Convertible)
-            tipo = "Convertible";
-            else
-            tipo = "Rastra";
+                if(!vehiculos.contains(vehiculo)){
+                vehiculos.add(vehiculo);
+                String tipo = "";
+                if(vehiculo instanceof Motocicleta)
+                tipo = "Motocicleta";
+                else if(vehiculo instanceof Camioneta)
+                tipo = "Camioneta";
+                else if(vehiculo instanceof Convertible)
+                tipo = "Convertible";
+                else
+                tipo = "Rastra";
 
-            Object[] objeto = {tipo, vehiculo.getChapa(), vehiculo.getFechaReparacion()};
+                Object[] objeto = {tipo, vehiculo.getChapa(), vehiculo.getFechaReparacion()};
 
-            model.addRow(objeto);
+                model.addRow(objeto);
+            } else
+                JOptionPane.showMessageDialog(this, "Ese vehiculo ya fue agregado con anterioridad");
         } else
         JOptionPane.showMessageDialog(this, "Aun no se han agregado vehiculos");
+        } catch(ArrayIndexOutOfBoundsException aioobe){
+            JOptionPane.showMessageDialog(this, "No existe un vehiculo con esa chapa");
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -235,36 +254,36 @@ public class FormInsertarTrabajador extends javax.swing.JDialog {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         ValidarCampos validar = new ValidarCampos();
-        boolean flag = true;
-        String mensaje = "Compruebe los siguientes parametros:";
+        
+        if(!txtNombre.getText().equals("") && !txtCI.getText().equals("")){
+            if(txtCI.getText().length() != 11){
+                JOptionPane.showMessageDialog(this, "-CI debe tener once numeros");
+            } else{
 
-        if(!validar.comprobarTexto(txtNombre.getText())){
-            flag = false;
-            mensaje += "\n-Nombre solo admite letras";
-        }
+                String nombre = txtNombre.getText();
+                String id = txtCI.getText();
+                Trabajador t = new Trabajador(nombre, id, vehiculos);
 
-        if(!validar.comprobarNumeros(txtCI.getText())){
-            flag = false;
-            mensaje += "\n-ID solo admite numeros";
-        }
+                taller.agregarTrabajador(t);
 
-        if(txtCI.getText().length() != 11){
-            flag = false;
-            mensaje += "\n-ID debe tener 11 numeros";
-        }
-
-        if(flag){
-            String nombre = txtNombre.getText();
-            String id = txtCI.getText();
-            Trabajador t = new Trabajador(nombre, id, vehiculos);
-
-            taller.agregarTrabajador(t);
-
-            JOptionPane.showMessageDialog(this, "Trabajador agregado correctamente");
+                JOptionPane.showMessageDialog(this, "Trabajador agregado correctamente");            
+            } 
         } else
-        JOptionPane.showMessageDialog(this, mensaje);
+            JOptionPane.showMessageDialog(this, "No puede dejar campos en blanco");
 
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char cog = evt.getKeyChar();
+        if(Character.isDigit(cog))
+        evt.consume();
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtCIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCIKeyTyped
+        char cog = evt.getKeyChar();
+        if(Character.isLetter(cog))
+        evt.consume();
+    }//GEN-LAST:event_txtCIKeyTyped
 
     public void cargarDatos(Trabajador t){
         txtNombre.setText(t.getNombre());
