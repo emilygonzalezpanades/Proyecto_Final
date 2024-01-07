@@ -116,7 +116,7 @@ public class TallerTest {
         
         double gananciaEsperada = 1010;
         double result = taller.gananciaTotal();
-        assertEquals(gananciaEsperada, result);
+        assertEquals(gananciaEsperada, result, 0.001);
     }
     
 
@@ -184,6 +184,6 @@ public class TallerTest {
         double salarioEsperado = 1116.75;
         double result = taller.calcularSalarioMensual("232454", "3");
         
-        assertEquals(salarioEsperado, result);
+        assertEquals(salarioEsperado, result, 0.001);
     }
 }
