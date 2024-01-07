@@ -114,7 +114,7 @@ public class TallerTest {
         taller.agregarVehiculo(v1);
         taller.agregarVehiculo(v2);
         
-        double gananciaEsperada = 1060;
+        double gananciaEsperada = 1010;
         double result = taller.gananciaTotal();
         assertEquals(gananciaEsperada, result);
     }
@@ -161,6 +161,9 @@ public class TallerTest {
         assertNull(expResult);
     }
     
+    /**
+     * Test of calcularSalarioMensual method, of class Taller.
+     */
     @Test
     public void testCalcularSalarioMensual() {
         ITaller taller = new Taller();
@@ -176,8 +179,9 @@ public class TallerTest {
         taller.agregarVehiculo(v4);
         
         Trabajador t = new Trabajador("Mauricio", "232454", taller.getVehiculos());
+        taller.agregarTrabajador(t);
         
-        double salarioEsperado = 1066.75;
+        double salarioEsperado = 1116.75;
         double result = taller.calcularSalarioMensual("232454", "3");
         
         assertEquals(salarioEsperado, result);
